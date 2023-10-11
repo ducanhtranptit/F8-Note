@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello World</h1>
+  </body>
+  <script>
+    console.log("OBJECT");
+    console.log(Object.prototype);
+    console.log("");
+
+    //cú pháp của object
+    const bim = {
+      //key: value => thuộc tính: property
+    };
+
+    var shirt = {
+      name: "ao co thun",
+      price: 1010100,
+      size: "5Xl",
+      matairal: "cotton",
+    };
+
+    /*
+      các cách truy cập vào gía trị của một object:
+      object.key
+      object['key']
+      object[variable]
+      */
+    var key = "matairal";
+    console.log(shirt[key]);
+
+    console.log(
+      `Đây là loại ${shirt[name]}, có giá là ${shirt["price"]} với size là: ${shirt.size}`
+    );
+
+    /*
+     các cách thêm dữ liệu vào một opject:
+     1. object.newKey = 'newValue'
+     2. object['newKey'] = 'newValue'
+     3. object[newKey] = 'newValue'
+      */
+
+    var newKey = "newKeyght";
+    bim.name = "duc anh tran";
+    bim["age"] = 21;
+    bim[newKey] = 100;
+
+    console.log(bim);
+
+    //ngoài ra có thể thêm key trực tiếp từ biến vào như sau đây:
+    var newKey1 = "name";
+    var newKey2 = "resolution";
+    var newKey3 = "play video";
+    var sonyA73 = {
+      [newKey1]: "Sony Alpha 7 mark 3",
+      [newKey2]: 24,
+      takePhoto: function captureImage() {
+        const video = "videoElement";
+        const canvas = "canvas";
+        const capturedImage = "capturedImage";
+      },
+      [newKey3]: function () {
+        console.log("playing...");
+      },
+    };
+
+    console.log(sonyA73);
+
+    //phân cấp cao nhất là hàm tạo Object()
+    Object.prototype.getHello = function () {
+      return "hello world";
+    };
+
+    var Student = function (name, age) {
+      this.name = name;
+      this.age = age;
+    };
+
+    var shirt = {
+      name: "ao co thun",
+      price: 1010100,
+      size: "5Xl",
+      matairal: "cotton",
+    };
+
+    var student = new Student("bimbeo", 18);
+    console.log(Student.prototype);
+    console.log(student.name);
+    console.log(student.getHello());
+
+    Object.keys(student).forEach((key) => {
+      console.log(student[key]);
+    });
+
+    Object.keys(shirt).forEach((key) => {
+      student[key] = shirt[key];
+    });
+
+    //hoặc assign(đích, nguồn)
+
+    var result = Object.assign(student, key);
+
+    //có thể dùng hàm assign để dùng copy object sang một ô nhớ  khác
+  </script>
+</html>

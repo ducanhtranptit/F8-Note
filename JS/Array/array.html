@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    Hello world
+  </body>
+  <script>
+    console.log(Array.prototype);
+
+    //khai báo mảng
+    console.log("khai báo mảng");
+    var emptyArray = []; //khai báo mảng trống
+    var customer = new Array(); // khởi tạo giống như một object
+    var exampleAray = [1, 2, 3, 4, null, undefined, true, false, "hello world"]; // khai báo có giá trị ban đầu
+    console.log(emptyArray);
+    console.log(exampleAray);
+    console.log("");
+
+    //lấy số lượng phần tử của mảng
+    console.log("lấy số lượng phần tử trong mảng");
+    var exampleArayCount = exampleAray.length;
+    console.log(exampleArayCount);
+    console.log("");
+
+    //kiểm tra 1 biến có phải là mảng hay không
+    console.log("kiểm tra 1 biến có phải mảng hay không");
+    if (Array.isArray(exampleAray)) {
+      console.log("is array");
+    } else {
+      console.log("no array");
+    }
+    //kiểm tra không cần dùng hàm
+    console.log(exampleAray.constructor.name);
+    console.log("");
+
+    //thêm phần tử vào mảng
+    console.log("thêm phần tử vào mảng");
+    exampleAray[1] = 1111;
+    exampleAray[2] = 2222;
+    exampleAray[exampleAray.length] = 999;
+    exampleAray[exampleAray.length] = 1995;
+    console.log(exampleAray);
+    console.log("");
+
+    //sửa phần tử trong mảng
+    console.log("sửa phần tử trong mảng");
+    exampleAray[2] = "bimbeo";
+    console.log(exampleAray);
+    console.log("");
+
+    //duyệt mảng
+    console.log("duyệt mảng");
+    //dùng for(){}
+    for (var i = 0; i < exampleAray.length; i++) {
+      console.log(exampleAray[i]);
+    }
+
+    console.log("");
+    //dùng for of
+    console.log("for of");
+    for (ky_tu of exampleAray) {
+      console.log(ky_tu); //trả ra giá trị
+    }
+    console.log("");
+    //dùng for in
+    console.log("for in");
+    for (index in exampleAray) {
+      console.log(index); //trả ra index
+    }
+    console.log("");
+
+    //xóa mảng
+    console.log("xóa mảng");
+    var indexDelete = 5;
+    var newArr = [];
+    for (i = 0; i < exampleAray.length; i++) {
+      if (indexDelete === i) continue;
+      newArr[newArr.length] = exampleAray[i];
+    }
+    console.log(exampleAray);
+    console.log(newArr);
+    console.log("");
+
+    //bài tập tính số lần xuất hiện của từng kí tự trong chuỗi
+    console.log("bài tập tính số lần xuất hiện của từng kí tự trong chuỗi");
+    var result = [];
+    var content = "abcabcabcabcabcabcabc";
+    for (var i = 0; i < content.length; i++) {
+      var char = content.charAt(i);
+      if (char === " ") continue;
+
+      if (result[char] === undefined) {
+        result[char] = 1;
+      } else {
+        result[char]++;
+      }
+    }
+    console.log(result);
+    console.log(typeof result);
+    for (char in result) {
+      console.log(`kí tự ${char} xuất hiện ${result[char]} lần`);
+    }
+    console.log("");
+
+    //một số phương thức khác phổ biến của array
+    console.log("một số phương thức khác phổ biến của array");
+    console.log(exampleAray);
+
+    //at() => lấy phần tử theo index
+    console.log(exampleAray.at(2));
+
+    //fill() => thay thế tất cả phần tử trong mảng thành 1 giá trị
+    console.log(exampleAray.fill("helloworld"));
+
+    var exampleAray = [
+      1,
+      2,
+      3,
+      4,
+      null,
+      undefined,
+      true,
+      4,
+      false,
+      "hello world",
+    ];
+
+    //indexOf() => tìm phần tử trong mảng và trả về index, nếu không có thì trả về -1
+    console.log(exampleAray.indexOf(4));
+
+    //lasrIndexOf() => tìm phần tử cuối trong mảng, nếu không có thì trả về -1
+    console.log(exampleAray.lastIndexOf(4));
+
+    //includes() => tìm phần tử có trong mảng hay không, và trả về true, false
+    console.log(exampleAray.includes("hello"));
+
+    //slice(start, end) => cắt mảng, start tính từ 0 và end tính từ 1
+    console.log(exampleAray.slice(0, 4));
+    console.log(exampleAray.slice(-5)); //cắt lấy 5 phần tử cuối
+
+    //toString() => chuyển mảng thành chuỗi, ngăn cách nhau bởi dấu ","
+    console.log(exampleAray.toString());
+
+    //join() => chuyển mảng thành chuỗi, ngăn cách nhau bởi kí tự bất kì
+    console.log(exampleAray.join(" and "));
+
+    //concat() ghép array hoặc thêm 1 phần tử mới trong mảng
+    newArr = ["a", "b", "c", "d", "e"];
+    console.log(exampleAray.concat(newArr));
+    console.log(exampleAray.concat("last element"));
+
+    //push() => thêm phần tử vào cuối mảng, trả về số lượng phần tử của mảng ban đầu, đồng thời thêm element vào mảng ban đầu
+    console.log(exampleAray.push("new element"));
+    console.log(exampleAray);
+
+    //shift() => xóa phần tử ở đầu amngr, trả về giá trị vứa xóa
+    console.log(exampleAray.shift());
+    console.log(exampleAray);
+
+    //unshift() => thêm phần tử vào đầu mảng, trả về số lượng phần tử của mảng đã thêm
+    console.log(exampleAray.unshift());
+    console.log(exampleAray);
+
+    //pop() => xóa phần tử cuối mảng, trả về giá trị vừa xóa
+    console.log(exampleAray.pop());
+    console.log(exampleAray);
+
+    //splice(index, number) => xóa number phần tử từ phần tử thứ index, trả về mảng đã sửa
+    console.log(exampleAray.splice(2, 3));
+
+    //sort() => sắp xếp tăng dần và gán vào mảng ban đầu
+    console.log(exampleAray.sort());
+
+    //reverse() => đảo ngươc mảng, nhưng mà phải gán thành biến chứ không được dùng luôn
+    exampleAray = exampleAray.reverse();
+    console.log(exampleAray);
+
+    var numbers = [1, 4, 6, 8, 3];
+    console.log(numbers);
+    //sắp xếp tăng dần
+    numbers.sort((a, b) => {
+      return a - b;
+    });
+
+    console.log(numbers);
+
+    //sắp xếp giảm dần
+    numbers.sort((a, b) => {
+      return b - a;
+    });
+
+    console.log(numbers);
+
+    //map() => thực hiện phép biến đổi từng phần tử trong mảng qua một callback function và trả ra một mảng có độ dài bằng mảng đã cho
+
+    console.log(
+      numbers.map((number) => {
+        return number * 2;
+      })
+    );
+
+    //every() => trả về true nếu như tất cả trả các lần lặp là true
+    var check = numbers.every((number) => {
+      console.log(number);
+      return number % 2 === 0;
+    });
+    console.log(check);
+
+    //sum() => chỉ cần có 1 lần lặp là true thì return là true
+    var check = numbers.some((number) => {
+      return number % 2 === 0;
+    });
+    console.log(check);
+
+    //filter() => //x
+
+    var user = ["ducanh", "bimbeo", "duc anh tran", "aloha", "photography"];
+    var result = user.filter((user) => {
+      if (user.includes("bim")) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    console.log(result);
+
+    //find(), findIndex(), findLast(), findLastIndex()
+    console.log(numbers);
+    var result = numbers.find((number) => {
+      return number > 4;
+    });
+    console.log(result);
+
+    var index = numbers.findIndex((number) => {
+      return number === 3;
+    });
+
+    var lastIndex = numbers.findLastIndex((number) => {
+      return number > 3;
+    });
+
+    var last = numbers.findLast((number) => {
+      return number > 3;
+    });
+    console.log(index);
+
+    //reduce()\
+    console.log(numbers);
+    var result = numbers.reduce((preValue, currentValue) => {
+      console.log(preValue, currentValue);
+      return currentValue + preValue;
+    });
+
+    console.log(result);
+  </script>
+</html>

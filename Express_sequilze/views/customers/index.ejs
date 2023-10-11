@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer List</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Customer List</h1>
+      <form action="" class="mb-2">
+        <div class="row">
+          <div class="col-3">
+            <select name="status" class="form-select">
+              <option value="all">Tất cả trạng thái</option>
+              <option value="active" <%= req.query.status === 'active' ? 'selected' : '' %>>Kích hoạt</option>
+              <option value="inactive" <%= req.query.status === 'inactive' ? 'selected' : '' %>>Chưa kích hoạt</option>
+            </select>
+          </div>
+          <div class="col-7">
+            <input
+              type="search"
+              name="keyword"
+              class="form-control"
+              placeholder="Từ khóa tìm kiếm..."
+              value="<%= req.query.keyword %>"
+            />
+          </div>
+          <div class="col-2 d-grid">
+            <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+          </div>
+        </div>
+      </form>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Status</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% customerList.forEach(function(customer, index) { %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td><%= customer.name %></td>
+            <td><%= customer.email %></td>
+            <td>*********</td>
+            <% if (customer.status === 0) { %> <% customer.status = 'inactive'; %> <% }
+            else { %> <% customer.status = 'active'; %> <% } %>
+            <td><%= customer.status %></td>
+            <td><%= moment(customer.created_at).locale('vi').fromNow() %></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

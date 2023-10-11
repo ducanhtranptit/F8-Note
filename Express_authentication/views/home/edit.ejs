@@ -1,0 +1,41 @@
+<h1>Sửa khách hàng</h1>
+<% if (msg?.length) { %>
+<div class="alert alert-danger"><%= msg %></div>
+<% } %>
+<form action="" method="post">
+  <div class="mb-3">
+    <label for="">Tên</label>
+    <input
+      type="text"
+      name="name"
+      placeholder="Tên..."
+      class="form-control"
+      value="<%= userDetail.name %>"
+    />
+    <span class="text-danger"><%= validate.getError(errors, 'name') %></span>
+  </div>
+  <div class="mb-3">
+    <label for="">Email</label>
+    <input
+      type="text"
+      name="email"
+      placeholder="Email..."
+      class="form-control"
+      value="<%= userDetail.email %>"
+    />
+    <span class="text-danger"><%= validate.getError(errors, 'email') %></span>
+  </div>
+  <div class="mb-3">
+    <label for="">Mật khẩu</label>
+    <input
+      type="password"
+      name="password"
+      placeholder="Mật khẩu..."
+      class="form-control"
+    />
+    <span class="text-danger"><%= validate.getError(errors, 'password') %></span>
+  </div>
+  <input type="hidden" name="type" value="edit" />
+  <button class="btn btn-success">Lưu</button>
+  <a href="/" class="btn btn-danger">Hủy</a>
+</form>

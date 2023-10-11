@@ -1,0 +1,241 @@
+SOẠN TRƯỚC:
+
+Trong js có 2 loại vòng lặp quan tọn khi làm việc với cấu trúc dữ liệu lặp lại là vòng lặp for...in và for.. of . 
+
+Vòng lặp for...in:
+
+Vòng lặp for...in được dòng để lặp qua các thuộc tính có thể được đếm của một đối tượng. Nó lặp qua các thuộc tính theo thứ tự ngẫu nhiên. Đây là cú pháp của vòng lặp for...in:
+
+for (variable in object) {
+  // code to be executed
+}
+
+
+ví dụ với đối tượng person:
+
+const person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+
+for (let key in person) {
+  console.log(key + ": " + person[key]);
+}
+
+
+=> Đoạn code trên sẽ cho kết quả là:
+
+name: John
+age: 30
+city: New York
+
+Trong ví dụ trên, chúng ta sử dụng vòng lặp for...in để lặp qua các thuộc tính của đối tượng person. Biến key lưu trữ tên của từng thuộc tính và chúng ta sử dụng person[key] để truy cập giá trị của thuộc tính.
+
+
+Vòng lặp for...of:
+Vòng lặp for...of được sử dụng để lặp qua các phần tử có thể lặp lại trong một đối tượng lặp. Đây có thể là mảng, chuỗi, hoặc một đối tượng có thể lặp lại. Đây là cú pháp của vòng lặp for...of:
+
+for (variable of iterable) {
+  // code to be executed
+}
+
+
+Ví dụ, giả sử chúng ta có một mảng fruits:
+
+const fruits = ["Apple", "Banana", "Orange"];
+
+for (let fruit of fruits) {
+  console.log(fruit);
+}
+
+
+Kết quả sẽ là:
+
+Apple
+Banana
+Orange
+
+
+vòng lặp while:
+
+sử dụng để lặp qua một khối mã miễn là một điều kiện được thỏa mãn
+
+cú pháp của vòng while:
+ 
+while (điều kiện) {
+  //code
+}
+
+
+vòng lặp do while:
+
+sử dụng để ;ặp qua một khối mã ít nhất một lần và say đó tiếp tục lặp miễn là một điều kiện được thỏa mãn.
+
+Khi do while lặp, điều kiện sẽ được kiểm tra. Nếu điều kiện là đúng thì sẽ thực thi khối mã còn nếu điều kiện sai thì sẽ thoát khỏi vòng lặp
+
+cú pháp:
+do {
+  //code
+} while (điều kiện) {
+  //code
+}
+
+
+#Định nghĩa hàm : cú pháp, các loại hàm, callback, clousure
+
+declaration function:
+function hello() {
+  
+}
+
+expression function:
+var hello = function() {
+  
+}
+
+
+truyền dưới dạng callback
+bayo(function hello() {
+  
+});
+
+arrow function:
+
+bình thường khai báo function sẽ là:
+var name = function(tham số) {
+  return hello;
+}
+
+thì khai báo arrow function sẽ chuyển từ function thành toán tử "=>" và nếu như hàm chỉ có hoạt động return thì có thể bỏ luôn return như sau:
+
+var name = (tham số) => hello;
+
+
+THAM TRỊ, THAM SỐ, ĐỐI SỐ
+
+rest parameters
+
+sẽ trả về một array
+
+*lưu ý là hàm nên để tối đa là 5 tham số
+
+
+
+
+
+CÁC KIỂU DỮ LIỆU CÓ TRONG JS
+
+JavaScript có các kiểu dữ liệu sau:
+
+1. Kiểu dữ liệu nguyên thủy (Primitive data types):
+a. Số (Number): Kiểu dữ liệu Number trong JavaScript được sử dụng để đại diện cho các giá trị số học. Nó bao gồm cả số nguyên và số thực. Ví dụ:
+
+#Ví dụ:
+let age = 25; // Số nguyên
+let pi = 3.14; // Số thực
+
+
+b. Chuỗi (String): Kiểu dữ liệu String trong JavaScript dùng để đại diện cho các giá trị văn bản. Chuỗi trong JS được bao quanh bởi dấu nháy đơn hoặc dấu nháy kép. Ví dụ:
+
+#Ví dụ:
+let message = "Hello, world!";
+let name = 'John';
+
+
+c. Boolean: Kiểu dữ liệu Boolean trong JavaScript chỉ có hai giá trị: true (đúng) hoặc false (sai). Được sử dụng để biểu thị các trạng thái logic. Ví dụ:
+
+#Ví dụ:
+let isLogged = true;
+let isValid = false;
+
+
+d. Null: Kiểu dữ liệu Null trong JavaScript chỉ có một giá trị là null. Đại diện cho một giá trị không tồn tại hoặc không hợp lệ. Ví dụ:
+
+#Ví dụ:
+let data = null;
+
+
+e. Undefined: Kiểu dữ liệu Undefined trong JavaScript đại diện cho một biến chưa được khởi tạo giá trị hoặc một thuộc tính không tồn tại trong đối tượng. Nó thường là giá trị mặc định khi một biến được khai báo nhưng chưa được gán giá trị. Ví dụ:
+
+#Ví dụ:
+let age;
+let address = undefined;
+
+
+2. Kiểu dữ liệu phức tạp (Complex data types):
+
+a. Đối tượng (Object): Kiểu dữ liệu Object trong JavaScript cho phép lưu trữ các cặp key-value (khóa-giá trị) và định nghĩa các phương thức. Đối tượng được tạo bằng cách sử dụng dấu ngoặc nhọn {} và các cặp key-value được phân tách bởi dấu phẩy. Ví dụ:
+
+#Ví dụ:
+let person = {
+  name: "John",
+  age: 30,
+  address: "123 Main St"
+};
+
+
+b. Mảng (Array): Kiểu dữ liệu Array trong JavaScript được sử dụng để lưu trữ một tập hợp các giá trị. Mảng được tạo bằng cách sử dụng dấu ngoặc vuông [] và các phần tử trong mảng được phân tách bởi dấu phẩy. Ví dụ:
+
+#Ví dụ:
+let numbers = [1, 2, 3, 4, 5];
+let fruits = ["apple", "banana", "orange"];
+
+
+c. Hàm (Function): Trong JavaScript, hàm cũng được coi là một loại dữ liệu. Bạn có thể gán một hàm cho một biến hoặc truyền hàm vào một hàm khác. Ví dụ:
+
+#Ví dụ:
+function sayHello() {
+  console.log("Hello, world!");
+}
+
+let greeting = sayHello;
+greeting(); // In ra "Hello, world!"
+
+
+3. Kiểu dữ liệu đặc biệt:
+a. Symbol: Kiểu dữ liệu Symbol là một kiểu dữ liệu mới được thêm vào trong phiên bản ECMAScript 6 (ES6). Một Symbol là một giá trị duy nhất có thể được sử dụng làm khóa trong đối tượng. Ví dụ:
+
+#Ví dụ:
+let id = Symbol("id");
+let user = {
+  [id]: 123
+};
+console.log(user[id]); // In ra 123
+
+
+
+
+GHI BÀI TRÊN LỚP
+
+vòng lặp là một đoạn chuwogn trình chạy lặp đi lặp lại theo số lần nào đó
+
+trong lập trình có 2 loại vòng lặp phổ biến
+
+vòng lặp có số lần lặp xác định trước for()
+vòng lặp có số lần lặp không xác định trước while() do while()
+
+
+vòng lặp for
+
+vòng lặp for tăng và vòng lặp for giảm
+
+cú pháp  chung của vòng for:
+
+for (biến, điều kiện dừng, bước nhảy)
+
+continue phải viết trước nội dung mà bạn muốn bỏ qua
+
+
+
+
+
+
+
+
+callback
+closure
+đệ quy
+
+
+

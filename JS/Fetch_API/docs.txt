@@ -1,0 +1,75 @@
+Đoạn tài liệu trên là hướng dẫn sử dụng API của dịch vụ rút gọn URL shrtco.de. Dưới đây là giải thích từng phần bằng tiếng Việt:
+
+shrtcode API Documentation
+Tài liệu API của shrtco.de
+
+API Base
+Địa chỉ gốc (base URL) của API:
+https://api.shrtco.de/v2/
+Tất cả các phương thức API đều hỗ trợ yêu cầu GET và POST.
+
+Authentication
+API này không yêu cầu xác thực (Authentication).
+
+Rate Limits
+Số lượng yêu cầu bị giới hạn thành 1 yêu cầu mỗi giây, cho mỗi địa chỉ IP.
+
+Terms of use
+Bằng cách sử dụng API của chúng tôi, bạn đồng ý với các điều khoản dịch vụ của chúng tôi. API này dựa trên chính sách sử dụng hợp lý (fair-use policy).
+
+Errors
+Tất cả các cuộc gọi API không thành công sẽ trả về một thông báo lỗi cùng với mã lỗi (error_code). Xem bảng dưới đây để tìm hiểu thêm về ý nghĩa của mỗi mã lỗi (error_code).
+
+Bảng mã lỗi và thông báo lỗi tương ứng:
+1: Không có URL nào được chỉ định ("url" parameter is empty).
+2: URL không hợp lệ (Invalid URL submitted).
+3: Đạt đến giới hạn tốc độ yêu cầu. Hãy đợi một giây và thử lại (Rate limit reached. Wait a second and try again).
+4: Địa chỉ IP đã bị chặn do vi phạm điều khoản dịch vụ (IP-Address has been blocked because of violating our terms of service).
+5: Mã shrtcode (slug) đã được sử dụng (shrtcode code already taken/in use).
+6: Lỗi không xác định (Unknown error).
+7: Không có mã nào được chỉ định ("code" parameter is empty).
+8: Mã không hợp lệ (Invalid code submitted). (code not found/there is no such short-link).
+9: Thiếu các thông số yêu cầu (Missing required parameters).
+10: Cố gắng rút gọn một liên kết bị cấm. Tìm hiểu thêm thông tin về các liên kết bị cấm (Trying to shorten a disallowed Link. More information on disallowed links).
+
+Rút gọn một liên kết
+/shorten
+Tạo một liên kết rút gọn cho một URL cụ thể. Yêu cầu tham số url.
+
+Ví dụ:
+Yêu cầu GET/POST: https://api.shrtco.de/v2/shorten?url=example.org/very/long/link.html
+Kết quả trả về:
+{
+"ok": true,
+"result": {
+"code": "KCveN",
+"short_link": "shrtco.de/KCveN",
+"full_short_link": "https://shrtco.de/KCveN",
+"short_link2": "9qr.de/KCveN",
+"full_short_link2": "https://9qr.de/KCveN",
+"share_link": "shrtco.de/share/KCveN",
+"full_share_link": "https://shrtco.de/share/KCveN",
+"original_link": "http://example.org/very/long/link.html"
+}
+}
+
+Truy vấn thông tin về một liên kết
+/info
+Lấy liên kết gốc của một liên kết rút gọn và nhiều thông tin khác. Yêu cầu tham số code chứa mã shrtcode. Mã shrtcode là phần cuối cùng của một liên kết rút gọn. Ví dụ: shrtco.de/example -> Code: "example"
+
+Ví dụ:
+Yêu cầu GET/POST: https://api.shrtco.de/v2/info?code=example
+Kết quả trả về:
+{
+"ok": true,
+"result": {
+"code": "example",
+"url": "http://www.example.com/",
+"password_protected": false,
+"blocked": false,
+"created": "2018-05-17 16:46:29"
+}
+}
+
+Liên hệ
+Nếu bạn cần trợ giúp sử dụng API này, có yêu cầu tính năng hoặc muốn có chức năng mở rộng (ví dụ: tên miền tùy chỉnh và/hoặc liên kết ngắn tùy chỉnh), hãy liên hệ với chúng tôi qua email: info@tibush.com.

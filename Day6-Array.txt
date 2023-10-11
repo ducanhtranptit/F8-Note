@@ -1,0 +1,15 @@
+có 2 dạng kiểu dữ liệu trong js:
+kiểu dữ liệu nguyên thủy(primitive): number, string, boolean, null và undefined
+kiểu dữ liệu tham chiếu(reference): object và function
+
+array không phải là kiểu dữ liệu mà array được phát triển từ object
+
+array được xây dựng từ một hàm tạo có tên là Array
+
+
+mảng là gì?
+
+mảng là một kiểu dữ liệu phức hợp
+rất nhiều các giá trị, nhiều kiểu dữ liệu khác nhau
+mỗi giá trị gọi là một element
+địa chỉ của giá trị gọi là index (bắt đầu từ số 0)

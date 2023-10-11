@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>API UI</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .action {
+        margin-top: 20px;
+      }
+
+      button {
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>API TODO LIST DEMO</h1>
+    <div id="output"></div>
+
+    <div class="action">
+      <button onclick="getUsers()">Get Todos</button>
+      <input type="number" id="userId" placeholder="User ID" />
+      <button onclick="getUsersById()">Get Todo by ID</button>
+    </div>
+
+    <div class="action">
+      <input type="text" id="title" placeholder="Title" />
+      <input type="checkbox" id="completed" />
+      <button onclick="createUser()">Create Todo</button>
+    </div>
+
+    <div class="action">
+      <input type="number" id="updateUserId" placeholder="User ID" />
+      <input type="text" id="updateTitle" placeholder="Title" />
+      <input type="checkbox" id="updateCompleted" />
+      <button onclick="updateUser()">Update Todo</button>
+    </div>
+
+    <div class="action">
+      <input type="number" id="deleteUserId" placeholder="User ID" />
+      <button onclick="deleteUserById()">Delete Todo</button>
+    </div>
+
+    <script src="api.js"></script>
+    <script>
+      // Gọi hàm để xử lý các chức năng API
+      displayUsers();
+    </script>
+  </body>
+</html>

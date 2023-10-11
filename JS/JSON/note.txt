@@ -1,0 +1,21 @@
+JSON
+
+- là một chuỗi
+-javascript object notation
+
+tình huống: 
+
+web(js)
+
+=> chuyển về một định dạng chung để các ngôn ngữ cùng đọc được(XML, JSON)
+
+app(java)
+
+
+
+các đặc điểm cùa json:
+1. hỗ trợ nhiều ngôn ngữ lập trình
+- dễn dàng chuyển đổi từ object, array sang json và ngược lại
+
+javascript(array, object)
+java/php đọc json => chuyển sang object, array

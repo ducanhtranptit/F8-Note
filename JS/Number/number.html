@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Number</h1>
+  </body>
+
+  <script>
+    /*
+    1. số nguyên: 
+    2. số thực
+    */
+    console.log(Number.prototype);
+    var age = 100;
+    var price = 12.5;
+    console.log(typeof price);
+    console.log(age);
+
+    //chuyển số thành chuỗi
+    console.log(age.toString(2));
+    //đối số truyền vào hàm toString():
+    //hệ thập phân(10)(mặc định)
+    //hệ nhị phân(2)
+    //hệ bát phân(8)
+    //hệ thập lục phân(16)
+
+    //số infinity: vượt quá mức lưu trữ cho phép thì sẽ trả về infinity
+    var number = 100;
+    while (number != Infinity) {
+      number *= number;
+    }
+    console.log(number);
+
+    //NaN: not a number
+
+    var a = 1;
+    b = "c";
+    console.log(isNaN(a * b));
+
+    //ép kiểu: ép  sang 2 kiểu int và float
+
+    var a = "1.4";
+    var aInt = parseInt(a);
+    var aFloat = parseFloat(a);
+    console.log(aInt);
+    console.log(aFloat);
+    console.log(+a); //cũng có thể ép kiểu như thế này thì sẽ tự động chọn kiểu dữ liệu
+
+    //kiểm tra kiểu số nói chung
+
+    var number = 30.5;
+    if (typeof number === "number") {
+      console.log("number");
+    }
+
+    //kiểm tra kiểu số nguyên
+    if (Number.isInteger(number)) {
+      console.log("so nguyen");
+    }
+    //kiểm tra kiểu số thực
+    if (parseInt(number) !== number) {
+      console.log("so thuc");
+    }
+
+    //làm tròn:
+    var number = 20.324123;
+    console.log(number.toFixed(3)); //lấy bao nhiêu chữ số phần thập phân
+
+    //định dạng số
+
+    var price = 12000.5;
+    console.log(price.toLocaleString());
+  </script>
+</html>

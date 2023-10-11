@@ -1,0 +1,8 @@
+khai báo kiểu chuỗi
+kiểu dữ liệu 
+
+hàm tạo function constructor 
+
+var fullName = 'duc anh tran'; // gán 1 chuỗi
+var fullName2 = String('ducanhtran') //hàm tạo
+var fullName3 = new String('duc anh tran') // tạo object  

@@ -1,0 +1,62 @@
+SOẠN TRƯỚC
+
+
+#Đường dẫn tương đối và đường dẫn tuyệt đối:
+-Đường dẫn tương đối: là một phần của đường dẫn tuyệt đối, không bao gồm link tuyệt đối VD:"https://127.0.0.1/003-path", thông thường đường dẫn tương đối là phần đường dẫn đến tập tin, phụ thuộc vào file mình đang đứng ở đâu thì sẽ cho ra đường dẫn tương ứng.
+VD: articles/index.html
+-Ưu điểm của đường dẫn tương đối là có thể sử dụng nhiều tên miền khác nhau.
+-Nhược điểm: nếu chưa quen cách sử dụng đường dãn tương đối thì việc xác định đường dẫn đến một trang web hay tài nguyên nào đó sẽ rất khó khăn và dễ bị sai
+	
+-Đường dẫn tuyệt đối: là một chuỗi đầy đủ bao gồm "https://", tên miền của trang web, đường dẫn đến tập tin.
+VD:"http://webcoban.vn/html/cach-tao-mot-trang-web-html.html"
+-Ưu điểm: dễ dàng xác định được đường dẫ đến một trang web hay một tài nguyên nào đó
+-Nhược điểm: không thể sử dụng trên các tên miền khác nhau nên khi up toàn bộ mã nguồn lên một tên miền (máy chủ) mới thì tên miền cũ sẽ không thể sử dụng được nữa
+
+
+#Toán tử 3 ngôi
+-Có thể hiểu toán tử 3 ngôi giống như một đoạn lệnh rẽ nhánh if else trong đó nếu như điều kiện thỏa mãn thì sẽ lấy giá trị thứ nhất còn sai thì sẽ lấy giá trị thứ 2.
+-Ví dụ: cú pháp của toán tử 3 ngôi
+
+let a = hello = 1 ? 2: 3;
+
+đoạn code trên tương ứng với một đoạn lệnh rẽ nhánh if else:
+if (hello = 1) {
+	let a = 2;
+} else {
+	let a = 3;
+}
+
+
+
+#Toán tử Nullish(??): là toán tử được sử dụng để kiểm tra xem một giá trị có là null hoặc undefined hay không. Nếu như giá trị đó là null hoặc undefined thì gí trị sau toán tử đó sẽ được sử dụng.
+-Ví dụ:
+let a = 1;
+let b = 3
+let hello = a ?? b;
+//console: 1
+
+
+-Trong ví dụ trên giá trị 3 được gán cho biến hello vì a không phải mang giá trị là null hoặc undefined. nếu như giá trị của a là null thì giá trị của hello sẽ là nullnnn 
+
+
+
+#Trythy và Falsy: trong js, một giá trị được coi là truthy nếu nó có thể đánh giá thành true là falsy nếu nó có thể đánh giá thành false thông qua hàm Boolean().
+
+- Các giá trị Falsy thường gặp: false; null; undefined; 0; NaN; ""; ''
+còn các giá trị còn lại chính là truthy.
+
+
+
+
+
+
+
+#LƯU Ý THÊM TRÊN LỚP
+
+toán tử &&
+
+var variable = (điều kiện) && (giá trị);
+
+nếu như điều kiện đúng thì giá trị được gán vào cho variable còn nếu không thì sẽ trả về falsy
+
+vòng switch case chỉ hoạt động với toán tử logic "==="				

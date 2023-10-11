@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input" />
+    <button onclick="checkPassword()">Check Password</button>
+  </body>
+  <script>
+    //chương trình kiểm tra mật khẩu
+
+    var checkPassword = function () {
+      var password = document.getElementById("input").value;
+      var checkLength = false,
+        checkSymbol = false,
+        checkNum = false,
+        checkUpper = false,
+        checkLower = false;
+
+      var number = "1234567890";
+      var symbol = "!@#$%^&*";
+
+      if (password.length >= 8) {
+        checkLength = true;
+
+        for (var i = 0; i < password.length; i++) {
+          var char = password.charAt(i);
+
+          if (number.includes(char)) {
+            checkNum = true;
+          }
+
+          if (symbol.includes(char)) {
+            checkSymbol = true;
+          }
+
+          if (symbol.indexOf(char) === 1 && number.indexOf(char) === -1) {
+            if (char == char.toUpperCase()) {
+              checkUpper = true;
+            }
+            if (char == char.toLocaleLowerCase()) {
+              checkLower = true;
+            }
+          }
+        }
+      }
+
+      if (checkLength && checkSymbol && checkNum && checkLower && checkUpper) {
+        alert("Mật khẩu mạnh");
+      } else {
+        alert("Mật khẩu yếu");
+      }
+
+      // cách ép kiểu từ string về number
+
+      var number = "-1";
+      number = +number;
+      console.log(typeof number);
+    };
+  </script>
+</html>
