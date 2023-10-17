@@ -14,6 +14,9 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const roleRouter = require("./routes/role");
 const authRouter = require("./routes/auth");
+
+const loginMiddleware = require("./middlewares/LoginMiddleware");
+
 const app = express();
 
 app.use(
@@ -49,6 +52,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/auth", authRouter);
+
+app.use(loginMiddleware);
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/role", roleRouter);

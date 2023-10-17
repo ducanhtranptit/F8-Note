@@ -13,7 +13,7 @@ const isLogin = (req, res, next) => {
 };
 
 /* GET users listing. */
-router.get("/register", LoginController.register);
+router.get("/register", isLogin, LoginController.register);
 router.post("/register", LoginController.handleRegister);
 router.get("/login", isLogin, LoginController.login);
 router.post(
