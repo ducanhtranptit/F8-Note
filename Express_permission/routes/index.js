@@ -3,7 +3,7 @@ var router = express.Router();
 
 const isLogout = (req, res, next) => {
 	if (!req.user) {
-		res.redirect("/login");
+		res.redirect("/auth/login");
 	}
 	next();
 };

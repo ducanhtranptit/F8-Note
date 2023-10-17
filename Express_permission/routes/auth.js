@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 
-const LoginController = require("../controller/LoginController");
+const LoginController = require("../controller/AuthController");
 
 const isLogin = (req, res, next) => {
 	if (req.user) {
@@ -13,12 +13,14 @@ const isLogin = (req, res, next) => {
 };
 
 /* GET users listing. */
-router.get("/", isLogin, LoginController.login);
+router.get("/register", LoginController.register);
+router.post("/register", LoginController.handleRegister);
+router.get("/login", isLogin, LoginController.login);
 router.post(
-	"/",
+	"/login",
 	passport.authenticate("local", {
 		successRedirect: "/",
-		failureRedirect: "/login",
+		failureRedirect: "/auth/login",
 	})
 );
 

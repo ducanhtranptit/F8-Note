@@ -13,7 +13,7 @@ const localPassport = require("./passport/localPassport");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const roleRouter = require("./routes/role");
-const loginRouter = require("./routes/login");
+const authRouter = require("./routes/auth");
 const app = express();
 
 app.use(
@@ -48,7 +48,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/login", loginRouter);
+app.use("/auth", authRouter);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/role", roleRouter);
