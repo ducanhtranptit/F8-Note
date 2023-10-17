@@ -1,16 +1,40 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
-var expressLayouts = require("express-ejs-layouts");
+const expressLayouts = require("express-ejs-layouts");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var roleRouter = require("./routes/role");
+const session = require("express-session");
+const passport = require("passport");
+const localPassport = require("./passport/localPassport");
 
-var app = express();
+const indexRouter = require("./routes/index");
+const usersRouter = require("./routes/users");
+const roleRouter = require("./routes/role");
+const loginRouter = require("./routes/login");
+const app = express();
+
+app.use(
+	session({
+		secret: "f8",
+		resave: true,
+		saveUninitialized: true,
+	})
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use("local", localPassport);
+
+passport.serializeUser(function (user, done) {
+	done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+	done(null, user);
+});
 
 app.use(expressLayouts);
 
@@ -24,6 +48,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.use("/login", loginRouter);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/role", roleRouter);

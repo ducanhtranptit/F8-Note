@@ -14,6 +14,6 @@ module.exports = {
 	handlePermission: (req, res) => {
 		const permission = req.body.permission;
 		console.log(permission);
-		res.send("<h1>Done<h1/>");
+		res.redirect("/users");
 	},
 };

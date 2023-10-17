@@ -8,8 +8,8 @@ module.exports = {
 		for (let i = 1; i < 50; i++) {
 			const password = hash.make("123456");
 			data.push({
-				name: `User ${i + 1}`,
-				email: `user ${i + 1}@gmail.com`,
+				name: `User${i + 1}`,
+				email: `user${i + 1}@gmail.com`,
 				password: password,
 				createdAt: new Date(),
 				updatedAt: new Date(),
