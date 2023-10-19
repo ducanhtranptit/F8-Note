@@ -4,38 +4,25 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th width="20%">Module</th>
+        <th width="20%">Roles</th>
         <th>Quyền</th>
       </tr>
     </thead>
     <tbody>
+      <% roles.forEach(({id, name}) => { %>
       <tr>
-        <td>Quản lý User</td>
         <td>
-          <div class="row">
-            <div class="col">
-              <label>
-                <input type="checkbox" name="permission" value="users.read" />Xem
-              </label>
-            </div>
-            <div class="col">
-              <label>
-                <input type="checkbox" name="permission" value="users.add" />Thêm
-              </label>
-            </div>
-            <div class="col">
-              <label>
-                <input type="checkbox" name="permission" value="users.update" />Sửa
-              </label>
-            </div>
-            <div class="col">
-              <label>
-                <input type="checkbox" name="permission" value="users.delete" />Xóa
-              </label>
-            </div>
+          <div class="col">
+            <label>
+              <input type="checkbox" name="roles" value=<%= id %> <%= isRole(user.Roles, id) ? "checked" : "" %> />
+            </label>
           </div>
         </td>
+        <td>
+         <%= name %>
+        </td>
       </tr>
+      <% }) %>
     </tbody>
   </table>
   <button class="btn btn-primary">Lưu thay đổi</button>
