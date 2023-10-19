@@ -124,4 +124,27 @@ module.exports = {
 
 		res.redirect("/role");
 	},
+
+	delete: async (req, res) => {
+		//lay role can xoa
+		const { id } = req.params;
+		const role = await Role.findOne({
+			where: {
+				id,
+			},
+		});
+
+		//xoa tat ca cac permission lien quan den role can xoa
+		await role.removePermissions(await Permission.findAll());
+
+		//xoa Role
+		await Role.destroy({
+			where: {
+				id,
+			},
+		});
+
+		console.log(role);
+		res.redirect("/role");
+	},
 };
