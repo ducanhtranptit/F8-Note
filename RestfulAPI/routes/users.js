@@ -7,5 +7,6 @@ var UserController = require("../controllers/UserController");
 router.get("/", UserController.index);
 router.get("/view/:id", UserController.view);
 router.post("/", UserController.store);
+router.put("/:id", UserController.updatePut);
 
 module.exports = router;

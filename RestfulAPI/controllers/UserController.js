@@ -1,8 +1,11 @@
 const { Op } = require("sequelize");
+const bcrypt = require("bcrypt");
 
 const model = require("../models/index");
 const { response } = require("express");
 const User = model.User;
+const ApiKey = model.ApiKey;
+const saltRounds = 10;
 
 module.exports = {
 	index: async (req, res) => {
@@ -83,5 +86,32 @@ module.exports = {
 			return;
 		}
 		res.json({});
+	},
+
+	updatePut: async (req, res) => {
+		const { id } = req.params;
+		const user = await User.findByPk(id);
+		if (!user) {
+			res.status(404).json({
+				status: "error",
+				error: "Not Found",
+			});
+			return;
+		}
+		const { name, email, password } = req.body;
+
+		//validate
+
+		if (password) {
+			const hashPassword = bcrypt.hashSync(password, saltRounds);
+			req.body.password = hashPassword;
+		}
+
+		const body = req.body;
+
+		res.json({
+			id,
+			body,
+		});
 	},
 };
