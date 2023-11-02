@@ -2,7 +2,8 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const model = require("../models/index");
 const User = model.User;
-const { JWT_SECRET, JWT_EXPIRE } = process.env;
+const RefreshToken = model.RefreshToken;
+const { JWT_SECRET, JWT_EXPIRE, JWT_REFRESH_EXPIRE } = process.env;
 
 module.exports = {
 	login: async (req, res) => {
@@ -29,7 +30,7 @@ module.exports = {
 			});
 			return;
 		}
-		const token = jwt.sign(
+		const accessToken = jwt.sign(
 			{
 				data: {
 					userId: user.id,
@@ -38,9 +39,27 @@ module.exports = {
 			JWT_SECRET,
 			{ expiresIn: JWT_EXPIRE * 60 }
 		);
+
+		const refreshToken = jwt.sign(
+			{
+				data: {
+					userId: user.id,
+				},
+			},
+			JWT_SECRET,
+			{ expiresIn: JWT_REFRESH_EXPIRE }
+		);
+
+		const newRefreshToken = await RefreshToken.create({
+			refreshToken: refreshToken,
+			userId: user.id,
+		});
+
+		console.log(newRefreshToken);
+
 		res.json({
 			status: "success",
-			accessToken: token,
+			accessToken: accessToken,
 		});
 	},
 
@@ -51,5 +70,35 @@ module.exports = {
 		res.json({
 			decoded,
 		});
+	},
+
+	refreshToken: async (req, res) => {
+		const { refreshToken } = req.body;
+
+		const user = await RefreshToken.findOne({
+			where: {
+				refreshToken: refreshToken,
+			},
+		});
+
+		const token = jwt.sign(
+			{
+				data: {
+					userId: user.id,
+				},
+			},
+			JWT_SECRET,
+			{ expiresIn: JWT_EXPIRE * 60 }
+		);
+
+		const newRefreshToken = jwt.sign(
+			{
+				data: {
+					userId: user.id,
+				},
+			},
+			JWT_SECRET,
+			{ expiresIn: JWT_REFRESH_EXPIRE }
+		);
 	},
 };
