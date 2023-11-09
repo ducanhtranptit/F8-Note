@@ -1,5 +1,5 @@
 {
-  "name": "express-cache",
+  "name": "express-kue",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -8,10 +8,13 @@
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "ejs": "~2.6.1",
     "express": "~4.16.1",
-    "file-system-cache": "^2.4.4",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+    "jade": "~1.11.0",
+    "kue": "^0.11.6",
+    "morgan": "~1.9.1",
+    "mysql2": "^3.6.3",
+    "nodemailer": "^6.9.7",
+    "sequelize": "^6.33.0"
   }
 }

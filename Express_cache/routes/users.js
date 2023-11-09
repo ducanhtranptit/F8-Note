@@ -2,41 +2,32 @@ var express = require("express");
 var router = express.Router();
 
 const cookie = require("cookie");
+const Cache = require("file-system-cache").default;
 
 const users = require("../data");
 
-router.get("/:id", function (req, res, next) {
-	const { id } = req.params;
-	if (req.headers.cookie) {
-		const cookies = cookie.parse(req.headers.cookie);
-		const userData = cookies.userData;
+const cache = Cache({
+	basePath: "./.cache",
+	ns: "f8",
+	hash: "sha1",
+	ttl: 86400,
+});
 
-		if (userData) {
-			const user = JSON.parse(userData);
+router.get("/", async function (req, res, next) {
+	const products = ["item 1", "item 2", "item 3"];
 
-			if (user.id === id) {
-				return res.json(user);
-			}
-		}
-	}
+	let data = await cache.get("products");
 
-	const user = users.find((user) => user.id === +id);
-
-	if (user) {
-		const userData = JSON.stringify(user);
-
-		const cookieValue = cookie.serialize("userData", userData, {
-			maxAge: 3600000,
-			httpOnly: true,
-			path: "/",
-		});
-
-		res.setHeader("Set-Cookie", cookieValue);
-
-		res.json(user);
+	if (!data) {
+		cache.setSync("products", products, 2);
+		data = products;
+		console.log("DB");
 	} else {
-		res.status(404).send("User not found");
+		console.log("cache");
 	}
+
+	console.log(data);
+	res.send("ok");
 });
 
 module.exports = router;
